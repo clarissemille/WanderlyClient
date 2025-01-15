@@ -1,13 +1,17 @@
 import React from 'react';
+import "../styles/pages/wanderly.css"
+
+import Logo from "../assets/images/logo.png"
 
 const Wanderly = () => {
     return (
         <div className="bg-homepage h-screen bg-cover bg-center">
-            <div className="text-center text-white relative top-1/2">
-                <h1 className="text-4xl font-bold">Wanderly</h1>
-                <p className="text-lg">Voyager, Photographier, Inspirer</p>
+           <img src={Logo} alt="logo" className="w-20 h-auto sm:w-24 md:w-32 lg:w-40 xl:w-48 p-5"/>
+           <div className='slogan text-right sm:ml-auto p-10 w-[50%]'>
+                    <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold text-gray-800">VOYAGER <br /> PHOTOGRAPHIER <br /> INSPIRER</h1> <br />
+                    <p className="text-lg sm:text-base lg:text-3xl text-gray-600 mt-2 leading-relaxed">Capturer des moments inoubliables et connectez-vous avec des voyageurs passionnés de photographie.</p>
+           </div>
         </div>
-</div>
 
     );
 };
