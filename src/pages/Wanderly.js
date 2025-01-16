@@ -2,7 +2,7 @@ import React from 'react';
 import "../styles/pages/wanderly.css"
 
 import Logo from "../assets/images/logo.png"
-import Auth from '../components/Auth';
+import Auth from '../components/Log/Auth';
 
 const Wanderly = () => {
     return (

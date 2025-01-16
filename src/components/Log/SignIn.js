@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import person from "../assets/icons/person.svg";
-import lock from "../assets/icons/lock.svg";
+import person from "../../assets/icons/person.svg";
+import lock from "../../assets/icons/lock.svg";
+import axios from "axios";
 
 const SignIn = ({ switchToSignUp }) => {
   // États pour les champs du formulaire
@@ -13,13 +14,36 @@ const SignIn = ({ switchToSignUp }) => {
     // Logique de soumission (envoi des données vers le backend)
     console.log("Identifiant:", username);
     console.log("Mot de passe:", password);
+
+    const emailError = document.querySelector(".email.error");
+    const passwordError = document.querySelector(".password.error");
+
+    axios({
+      method: "post",
+      url: `${process.env.REACT_APP_API_URL}api/user/login`,
+      withCredentials: true,
+      data: {
+          username, 
+          password,
+      }
+  })
+  .then((res) => {
+      if(res.data.errors){
+          emailError.innerHTML = res.data.errors.email;
+          passwordError.innerHTML = res.data.errors.password;
+      } else {
+          window.location = "/"
+      }
+  })
+  .catch((err) => {
+      console.log(err);
+      
+  })
   }
 
   return (
     
         <div>
-
-        {/* Formulaire de Connexion */}
         <form onSubmit={handleSubmit}>
           {/* Identifiant */}
           <div className="mb-4">
@@ -33,11 +57,14 @@ const SignIn = ({ switchToSignUp }) => {
             <input
               type="text"
               id="username"
-              value={username} // Lier la valeur au state
-              onChange={(e) => setUsername(e.target.value)} // Mettre à jour l'état lors de la saisie
+              name="username"
               className="w-full border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
               required
             />
+            <div className="username error text-error"></div>
+
           </div>
 
           {/* Mot de passe */}
@@ -52,20 +79,21 @@ const SignIn = ({ switchToSignUp }) => {
             <input
               type="password"
               id="password"
-              value={password} // Lier la valeur au state
-              onChange={(e) => setPassword(e.target.value)} // Mettre à jour l'état lors de la saisie
+              name="password"
               className="w-full border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
+              onChange={(e) => setPassword(e.target.value)} 
+              value={password} 
               required
             />
           </div>
 
           {/* Submit Button */}
-          <button
+          <input
             type="submit"
             className="w-full bg-customTeal text-white rounded-lg py-2 hover:bg-blue-700 transition"
-          >
-            Connexion
-          </button>
+            value="Connexion"
+          />
+           
         </form>
 
         <div className="text-center mt-4 ">
