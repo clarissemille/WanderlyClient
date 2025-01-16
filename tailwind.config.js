@@ -11,7 +11,7 @@ module.exports = {
       },
       animation: {
         'scroll-right': 'scrollRight 1s ease-in-out',
-        'fade-in': 'fadeIn 4s ease-in-out forwards',
+        'fade-in': 'fadeIn 2s ease-in-out forwards',
       },
       keyframes: {
         scrollRight: {
