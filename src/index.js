@@ -16,8 +16,8 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk, logger),
 });
 
-store.dispatch(getUsers())
-store.dispatch(getPosts())
+// store.dispatch(getUsers())
+// store.dispatch(getPosts())
 
 // Rendu principal
 const root = ReactDOM.createRoot(document.getElementById('root'));

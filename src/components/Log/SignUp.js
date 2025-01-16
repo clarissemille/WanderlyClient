@@ -43,7 +43,7 @@ const SignUp = ({ switchToSignIn }) => {
         } else {
             await axios({
                 method: "post", 
-                url: `${process.env.REACT_APP_API_URL}api/user/register`,
+                url: `${process.env.REACT_APP_API_URL}api/users/register`,
                 data: {
                     username, 
                     email,
