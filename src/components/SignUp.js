@@ -3,29 +3,38 @@ import React, { useEffect, useState } from "react";
 import person from "../assets/icons/person.svg";
 import mail from "../assets/icons/mail.svg";
 import lock from "../assets/icons/lock.svg";
+import SignIn from "./SignIn";
 
 
 const SignUp = ({ switchToSignIn }) => {
+    const [formSubmit, setFormSubmit] = useState(false);
+    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [controlPassword, setControlPassword] = useState("")
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Empêche le rechargement de la page lors de l'envoi du formulaire
+        // Logique de soumission (envoi des données vers le backend)
+        console.log("Identifiant:", username);
+        console.log("eail:", email);
+        console.log("Mot de passe:", password);
+    }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center">
-      <div
-        className="bg-gray-800 p-12 rounded-lg shadow-lg bg-opacity-50 w-full max-w-lg min-h-[50vh] text-xl"
-      >
-        {/* Header: Tabs */}
-        <div className="flex justify-around border-b pb-8 mb-8">
-          <button
-            className="text-white text-2xl"
-            onClick={switchToSignIn}
-          >
-            Se connecter
-          </button>
-          <button className="text-customTeal font-bold border-b-4 border-customTeal text-2xl">
-            S'inscrire
-          </button>
-        </div>
+   <>
 
-        {/* Identifiant */}
+    {formSubmit ? (
+         <>
+            <SignIn />
+            <span></span>
+            <h4 className='success'>Enregistrement réussi, veuillez-vous connecter</h4>
+         </>
+    ) : (
+
+        <>
+        <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
             className="flex items-center space-x-2 text-white mb-2"
@@ -96,8 +105,8 @@ const SignUp = ({ switchToSignIn }) => {
         >
           Inscription
         </button>
+        </form>
 
-        {/* Texte connexion */}
         <div className="text-center mt-6">
           <span className="text-white">Vous avez déjà un compte ? </span>
           <button
@@ -107,8 +116,13 @@ const SignUp = ({ switchToSignIn }) => {
             Se connecter
           </button>
         </div>
-      </div>
-    </div>
+        </>
+
+    )}
+
+       
+      </>
+  
   );
 };
 

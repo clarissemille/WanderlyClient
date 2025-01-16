@@ -13,53 +13,11 @@ const SignIn = ({ switchToSignUp }) => {
     // Logique de soumission (envoi des données vers le backend)
     console.log("Identifiant:", username);
     console.log("Mot de passe:", password);
-
-    // Exemple de soumission d'une requête à un backend (à adapter selon votre API)
-    try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
-      });
-      const data = await response.json();
-
-      if (data.success) {
-        console.log("Connexion réussie");
-        // Rediriger l'utilisateur ou faire d'autres actions
-      } else {
-        console.log("Erreur de connexion:", data.message);
-        // Gérer l'erreur, afficher un message d'erreur
-      }
-    } catch (error) {
-      console.error("Erreur lors de la connexion:", error);
-    }
-  };
+  }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center">
-      <div
-        className="bg-gray-800 p-12 rounded-lg shadow-lg bg-opacity-50 animate-fade-in duration-1000 delay-4000 w-full max-w-lg min-h-[40vh] text-xl opacity-0"
-        style={{
-          animationDelay: "1s", // Délai avant l'animation
-        }}
-      >
-        {/* Header: Tabs */}
-        <div className="flex justify-around border-b pb-8 mb-8">
-          <button className="text-customTeal font-bold border-b-4 border-customTeal text-2xl">
-            Se connecter
-          </button>
-          <button
-            className="text-white text-2xl"
-            onClick={switchToSignUp}
-          >
-            S'inscrire
-          </button>
-        </div>
+    
+        <div>
 
         {/* Formulaire de Connexion */}
         <form onSubmit={handleSubmit}>
@@ -110,16 +68,15 @@ const SignIn = ({ switchToSignUp }) => {
           </button>
         </form>
 
-        {/* Lien Mot de passe oublié */}
         <div className="text-center mt-4 ">
           <a href="#!" className="text-white hover:underline ">
             Mot de passe oublié ?
           </a>
         </div>
 
-        {/* Texte inscription */}
+       
         <div className="text-center mt-6 ">
-          <span className="text-white">Vous n'avez pas de compte ?</span>
+          <span className="text-white">Vous n'avez pas de compte ? </span>
           <button
             onClick={switchToSignUp}
             className="text-customTeal font-semibold hover:underline"
@@ -128,7 +85,7 @@ const SignIn = ({ switchToSignUp }) => {
           </button>
         </div>
       </div>
-    </div>
+    
   );
 };
 
