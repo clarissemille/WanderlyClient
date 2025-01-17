@@ -68,7 +68,7 @@ const SignUp = ({ switchToSignIn }) => {
     {formSubmit ? (
          <>
             <h4 className='success text-customTeal m-1 '>Enregistrement réussi, veuillez-vous connecter</h4>
-            <SignIn />
+            <SignIn  />
          </>
     ) : (
 

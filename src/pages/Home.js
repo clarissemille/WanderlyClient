@@ -4,7 +4,8 @@ import Auth from '../components/Log/Auth';
 const Home = () => {
     return (
         <div>
-            <Auth signin={true} signup={false} />
+            <h1>Bienvenu sur Wanderly </h1>
+           
         </div>
     );
 };

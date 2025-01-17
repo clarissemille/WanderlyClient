@@ -11,16 +11,14 @@ const SignIn = ({ switchToSignUp }) => {
   // Gérer la soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault(); // Empêche le rechargement de la page lors de l'envoi du formulaire
-    // Logique de soumission (envoi des données vers le backend)
-    console.log("Identifiant:", username);
-    console.log("Mot de passe:", password);
+   
 
-    const emailError = document.querySelector(".email.error");
+    const usernameError = document.querySelector(".username.error");
     const passwordError = document.querySelector(".password.error");
 
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}api/user/login`,
+      url: `${process.env.REACT_APP_API_URL}api/users/login`,
       withCredentials: true,
       data: {
           username, 
@@ -29,14 +27,14 @@ const SignIn = ({ switchToSignUp }) => {
   })
   .then((res) => {
       if(res.data.errors){
-          emailError.innerHTML = res.data.errors.email;
+          usernameError.innerHTML = res.data.errors.username;
           passwordError.innerHTML = res.data.errors.password;
       } else {
-          window.location = "/"
+          window.location = "/profil"
       }
   })
   .catch((err) => {
-      console.log(err);
+      console.log("err");
       
   })
   }
