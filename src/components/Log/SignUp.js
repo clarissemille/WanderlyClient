@@ -17,10 +17,7 @@ const SignUp = ({ switchToSignIn }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Empêche le rechargement de la page lors de l'envoi du formulaire
-        // Logique de soumission (envoi des données vers le backend)
-        console.log("Identifiant:", username);
-        console.log("eail:", email);
-        console.log("Mot de passe:", password);
+        
 
         const terms = document.getElementById("terms");
         const pseudoError = document.querySelector(".pseudo.error")
@@ -70,9 +67,8 @@ const SignUp = ({ switchToSignIn }) => {
 
     {formSubmit ? (
          <>
+            <h4 className='success text-customTeal m-1 '>Enregistrement réussi, veuillez-vous connecter</h4>
             <SignIn />
-            <span></span>
-            <h4 className='success'>Enregistrement réussi, veuillez-vous connecter</h4>
          </>
     ) : (
 
@@ -94,7 +90,7 @@ const SignUp = ({ switchToSignIn }) => {
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
-        <div className="pseudo error"></div>
+        <div className="pseudo error text-error"></div>
 
         </div>
 

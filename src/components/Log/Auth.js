@@ -4,7 +4,7 @@ import SignUp from "./SignUp";
 
 const Auth = () => {
     const [signInModal, setSignInModal] = useState(true)
-    const [signUpModal, setSignUpModal] = useState("")
+    const [signUpModal, setSignUpModal] = useState(false)
 
     const handleModals = (e) => {
         if (e.target.id === "login") {
