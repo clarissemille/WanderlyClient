@@ -10,7 +10,7 @@ import axios from "axios";
 const SignUp = ({ switchToSignIn }) => {
     const [formSubmit, setFormSubmit] = useState(false);
     const [email, setEmail] = useState("")
-    const [username, setUsername] = useState("");
+    const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [controlPassword, setControlPassword] = useState("")
 
@@ -20,7 +20,7 @@ const SignUp = ({ switchToSignIn }) => {
         
 
         const terms = document.getElementById("terms");
-        const pseudoError = document.querySelector(".pseudo.error")
+        const nameError = document.querySelector(".name.error")
         const emailError = document.querySelector(".email.error")
         const passwordError = document.querySelector(".password.error")
         const passwordConfirmError = document.querySelector(".password-confirm.error")
@@ -40,16 +40,16 @@ const SignUp = ({ switchToSignIn }) => {
         } else {
             await axios({
                 method: "post", 
-                url: `${process.env.REACT_APP_API_URL}api/users/register`,
+                url: `${process.env.REACT_APP_API_URL}api/user/register`,
                 data: {
-                    username, 
+                    name, 
                     email,
                     password,
                 }
             })
             .then((res) => {
                 if(res.data.errors) {
-                    pseudoError.innerHTML = res.data.errors.pseudo
+                    nameError.innerHTML = res.data.errors.name
                     emailError.innerHTML = res.data.errors.email
                     passwordError.innerHTML = res.data.errors.password
                 } else {
@@ -87,8 +87,8 @@ const SignUp = ({ switchToSignIn }) => {
             name="username"
             id="username"
             className="w-full border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
+            onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         <div className="pseudo error text-error"></div>
 

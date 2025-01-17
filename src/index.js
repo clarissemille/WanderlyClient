@@ -10,6 +10,7 @@ import rootReducer from './reducers'; // Import correct du rootReducer
 import { getUsers } from './actions/users.actions';
 import { getPosts } from './actions/post.actions';
 
+
 // Configuration du store
 const store = configureStore({
   reducer: rootReducer,

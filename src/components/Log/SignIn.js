@@ -5,7 +5,7 @@ import axios from "axios";
 
 const SignIn = ({ switchToSignUp }) => {
   // États pour les champs du formulaire
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   // Gérer la soumission du formulaire
@@ -13,28 +13,28 @@ const SignIn = ({ switchToSignUp }) => {
     e.preventDefault(); // Empêche le rechargement de la page lors de l'envoi du formulaire
    
 
-    const usernameError = document.querySelector(".username.error");
+    const nameError = document.querySelector(".name.error");
     const passwordError = document.querySelector(".password.error");
 
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_API_URL}api/users/login`,
+      url: `${process.env.REACT_APP_API_URL}api/user/login`,
       withCredentials: true,
       data: {
-          username, 
+          name, 
           password,
       }
   })
   .then((res) => {
       if(res.data.errors){
-          usernameError.innerHTML = res.data.errors.username;
+          nameError.innerHTML = res.data.errors.name;
           passwordError.innerHTML = res.data.errors.password;
       } else {
           window.location = "/profil"
       }
   })
   .catch((err) => {
-      console.log("err");
+      console.log(err);
       
   })
   }
@@ -57,11 +57,11 @@ const SignIn = ({ switchToSignUp }) => {
               id="username"
               name="username"
               className="w-full border rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-300"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
+              onChange={(e) => setName(e.target.value)}
+              value={name}
               required
             />
-            <div className="username error text-error"></div>
+            <div className="name error text-error"></div>
 
           </div>
 
@@ -83,6 +83,8 @@ const SignIn = ({ switchToSignUp }) => {
               value={password} 
               required
             />
+            <div className="password error text-error"></div>
+
           </div>
 
           {/* Submit Button */}

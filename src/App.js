@@ -1,12 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ReactDOM from "react-dom";import './App.css';
 import Wanderly from './pages/Wanderly';
+import Routes  from './components/Routes/index';
+
 
 function App() {
   return (
-    <div className="App">
+    <React.StrictMode>
+
       <Wanderly />
-    </div>
+      {/* <Routes /> */}
+    </React.StrictMode>
+
   );
 }
 
