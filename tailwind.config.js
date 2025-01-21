@@ -8,7 +8,9 @@ module.exports = {
       },
       colors: {
         customTeal: "#24ACA4",
-        error: "#FC4444"
+        error: "#FC4444",
+        bgBlue: "#20242C"
+        
       },
       animation: {
         'scroll-right': 'scrollRight 1s ease-in-out',

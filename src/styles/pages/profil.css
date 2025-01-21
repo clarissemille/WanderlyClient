@@ -1,0 +1,42 @@
+.infos{
+    background-color: red;
+    margin: 5%;
+    display: flex;
+    font-family: "Josefin Sans", serif;
+}
+
+.photo{
+    display: flex;
+    background-color: blue;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.pp{
+    width: 200px;
+    height: 200px;
+    border-radius: 100% ;
+}
+
+.infosProfil{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    background-color: brown;
+}
+
+.name {
+    display: flex;
+
+}
+
+.stats {
+    display: flex;
+    
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+}

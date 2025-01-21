@@ -31,7 +31,7 @@ const SignIn = ({ switchToSignUp }) => {
           nameError.innerHTML = res.data.errors.name;
           passwordError.innerHTML = res.data.errors.password;
       } else {
-        window.location = "/home"
+        window.location = "/profil"
         
       }
   })
