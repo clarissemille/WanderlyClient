@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import person from "../../assets/icons/person.svg";
 import lock from "../../assets/icons/lock.svg";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = ({ switchToSignUp }) => {
   // États pour les champs du formulaire
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
+
   // Gérer la soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault(); // Empêche le rechargement de la page lors de l'envoi du formulaire
-   
-
     const nameError = document.querySelector(".name.error");
     const passwordError = document.querySelector(".password.error");
 
@@ -26,14 +26,16 @@ const SignIn = ({ switchToSignUp }) => {
       }
   })
   .then((res) => {
-      if(res.data.errors){
+      if(res.data.errors){        
+        console.log("connexion error");
           nameError.innerHTML = res.data.errors.name;
           passwordError.innerHTML = res.data.errors.password;
       } else {
-          window.location = "/profil"
+        window.location = "/home"
+        
       }
   })
-  .catch((err) => {
+  .catch((err) => {    
       console.log(err);
       
   })

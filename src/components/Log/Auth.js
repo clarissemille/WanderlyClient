@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
+
 const Auth = () => {
     const [signInModal, setSignInModal] = useState(true)
     const [signUpModal, setSignUpModal] = useState(false)
