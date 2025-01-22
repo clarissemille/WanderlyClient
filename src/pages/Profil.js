@@ -4,12 +4,21 @@ import Travels from "../components/Profil/Travels";
 import Map from "../components/Profil/Map";
 import Messages from "../components/Profil/Messages";
 
-import travels from "../assets/icons/travels.svg"
-import map from "../assets/icons/map.svg"
-import messages from "../assets/icons/messages.svg"
+// Importation des icônes (FontAwesome en exemple)
+import { FaMapMarkedAlt, FaEnvelope } from "react-icons/fa";
+import { GiWorld } from "react-icons/gi";
+import { LuMessageSquareText } from "react-icons/lu";
+
+
 
 const ProfilPage = () => {
   const [activeTab, setActiveTab] = useState("Travels");
+
+  const tabs = [
+    { id: "Travels", label: "Travels", icon: <GiWorld /> },
+    { id: "Map", label: "Map", icon: <FaMapMarkedAlt /> },
+    { id: "Messages", label: "Messages", icon: <LuMessageSquareText />},
+  ];
 
   return (
     <div className="h-screen w-screen bg-bgBlue">
@@ -17,37 +26,26 @@ const ProfilPage = () => {
       <InfoProfil />
 
       {/* Navigation */}
-      <div className="bg-bgBlue">
-        <nav className="flex text-white justify-around py-4">
-          <button
-            className={`text-lg font-semibold flex ${
-              activeTab === "Travels" ? "text-customTeal" : "text-white"
-            }`}
-            onClick={() => setActiveTab("Travels")}
-          >
-            <img src={travels} alt="" className="fill-bgBlue"/>
-            Travels
-          </button>
-          <button
-            className={`flex text-lg font-semibold ${
-              activeTab === "Map" ? "text-customTeal" : "text-white"
-            }`}
-            onClick={() => setActiveTab("Map")}
-          >
-            <img src={map} alt="" className="bgBlue" />
-            Map
-          </button>
-          <button
-            className={`flex text-lg font-semibold ${
-              activeTab === "Messages" ? "text-customTeal" : "text-white"
-            }`}
-            onClick={() => setActiveTab("Messages")}
-          >
-            <img src={messages} alt="" className={`${
-              activeTab === "Messages" ? "color-customTeal" : "color-white"
-            }`} />
-            Messages
-          </button>
+      <div className="border-t border-gray-300 bg-bgBlue">
+        <nav className="flex justify-around py-4">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              className={`flex items-center space-x-3 ${
+                activeTab === tab.id ? "text-customTeal" : "text-gray-500"
+              }`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              <div
+                className={`text-2xl ${
+                  activeTab === tab.id ? "text-customTeal" : "text-gray-500"
+                }`}
+              >
+                {tab.icon}
+              </div>
+              <span className="text-lg font-semibold">{tab.label}</span>
+            </button>
+          ))}
         </nav>
       </div>
 
