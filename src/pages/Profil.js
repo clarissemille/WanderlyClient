@@ -8,6 +8,7 @@ import Messages from "../components/Profil/Messages";
 import { FaMapMarkedAlt, FaEnvelope } from "react-icons/fa";
 import { GiWorld } from "react-icons/gi";
 import { LuMessageSquareText } from "react-icons/lu";
+import Navbar from "../components/Navbar";
 
 
 
@@ -22,6 +23,7 @@ const ProfilPage = () => {
 
   return (
     <div className="h-screen w-screen bg-bgBlue">
+      <Navbar />
       {/* Section InfoProfil */}
       <InfoProfil />
 
