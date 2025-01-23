@@ -1,17 +1,39 @@
-import React from "react";
-import ReactDOM from "react-dom";import './App.css';
-import Wanderly from './pages/Wanderly';
+import React, { useEffect, useState } from 'react';
 import Routes from "./components/Routes/index"
+import { UidContext } from './components/AppContext';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getUser } from './actions/user.actions';
 
+const App = () => {
+  const [uid, setUid] =useState(null)
+  const dispatch = useDispatch()
 
+  useEffect( () => {
+    const fetchToken = async() => {
 
-function App() {
+      await axios({
+        method: "get",
+        url: `${process.env.REACT_APP_API_URL}jwtid`,
+        withCredentials: true
+      })
+      .then((res) => {
+        setUid(res.data);
+      })
+      .catch((err) => console.log("No token")
+      )
+    }
+    fetchToken();
+
+    if(uid) dispatch(getUser(uid))
+  }, [uid, dispatch])
   return (
-    <React.StrictMode>
-      <Routes /> 
-    </React.StrictMode>
+      <UidContext.Provider value={uid} > 
+        <Routes />
+      </UidContext.Provider> 
 
   );
-}
+};
+
 
 export default App;

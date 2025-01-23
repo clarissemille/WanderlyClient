@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import InfoProfil from "../components/Profil/InfoProfil";
 import Travels from "../components/Profil/Travels";
 import Map from "../components/Profil/Map";
@@ -9,10 +9,16 @@ import { FaMapMarkedAlt, FaEnvelope } from "react-icons/fa";
 import { GiWorld } from "react-icons/gi";
 import { LuMessageSquareText } from "react-icons/lu";
 import Navbar from "../components/Navbar";
+import { UidContext } from '../components/AppContext';
+import Wanderly from "./Wanderly";
+
 
 
 
 const ProfilPage = () => {
+  const uid = useContext(UidContext)
+
+
   const [activeTab, setActiveTab] = useState("Travels");
 
   const tabs = [
@@ -22,6 +28,9 @@ const ProfilPage = () => {
   ];
 
   return (
+    <>
+    {uid ? (
+
     <div className="h-screen w-screen bg-bgBlue">
       <Navbar />
       {/* Section InfoProfil */}
@@ -58,6 +67,13 @@ const ProfilPage = () => {
         {activeTab === "Messages" && <Messages />}
       </div>
     </div>
+    ): (
+
+      
+      <Wanderly />
+    )}
+
+</>
   );
 };
 

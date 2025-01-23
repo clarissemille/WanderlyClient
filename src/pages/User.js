@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Navbar from '../components/Navbar';
+import Wanderly from './Wanderly';
+import { UidContext } from '../components/AppContext';
+
 
 const User = () => {
+    const uid = useContext(UidContext)
+    
     return (
-        <div>
-            
-        </div>
+        <>
+
+        {uid ? (
+            <div>
+                <Navbar />
+            </div>
+        ): (
+            <Wanderly />
+        )
+
+        }
+        </>
     );
 };
 
