@@ -16,9 +16,9 @@ const NewPostForm = () => {
     if (location || description || file) {
       const data = new FormData();
       data.append("posterId", userData._id); // L'identifiant de l'utilisateur
-      data.append("posterName", userData.name); // Inclure le nom de l'utilisateur
+      data.append("name", userData.name); // Inclure le nom de l'utilisateur
       data.append("location", location); // Lieu
-      data.append("message", description); // Descriptif
+      data.append("description", description); // Descriptif
       if (file) {
         data.append("file", file); // Fichier image
       }
