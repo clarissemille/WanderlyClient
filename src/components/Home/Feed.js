@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 const Feed = ({ posts, isLoading }) => {
   const usersData = useSelector((state) => state.usersReducer);
+  const userData = useSelector((state) => state.userReducer);
+
 
   if (isLoading) {
     return <p className="text-gray-500 text-center">Chargement des publications...</p>;
